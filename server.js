@@ -13,8 +13,15 @@ const app = express();
 app.use(bodyParser.json());
 
 
+// CORS configuration to allow all subdomains of a specific domain
 const corsOptions = {
-  origin: ['https://university-dashboard-pi.vercel.app/'], 
+  origin: (origin, callback) => {
+    if (!origin || origin.match(/^https:\/\/university-dashboard-pi\.vercel\.app$/) || origin.match(/^https:\/\/.*\.university-dashboard-pi\.vercel\.app$/)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   optionsSuccessStatus: 200
 };
 
