@@ -11,7 +11,14 @@ require('dotenv').config();
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
+
+
+const corsOptions = {
+  origin: ['http://your-frontend-domain.com'], // Replace with your frontend domain
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/fields', fieldRoutes);
