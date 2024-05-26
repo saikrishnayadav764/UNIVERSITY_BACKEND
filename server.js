@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 const corsOptions = {
-  origin: ['http://your-frontend-domain.com'], // Replace with your frontend domain
+  origin: ['https://university-dashboard-pi.vercel.app/'], 
   optionsSuccessStatus: 200
 };
 
